@@ -52,7 +52,14 @@ bottles-opener add flp,fst "FL Studio"
 
 ## How to install
 
-**From source (for now)**
+**Arch (for the cachyos enjoyers)**
+
+```bash
+yay -S bottles-opener
+bottles-opener enable
+```
+
+**From source**
 
 ```bash
 make

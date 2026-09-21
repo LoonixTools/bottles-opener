@@ -72,7 +72,7 @@ endif
 pot:
 	xgettext --language=Shell --from-code=UTF-8 -k --keyword=bo_msg --keyword=bo_msg_into \
 		--package-name=bottles-opener --package-version=$(VERSION) \
-		--msgid-bugs-address=https://github.com/Felitendo/bottles-opener/issues \
+		--msgid-bugs-address=https://github.com/LoonixTools/bottles-opener/issues \
 		--add-comments=TRANSLATORS --no-location --sort-output \
 		--output=po/bottles-opener.pot.tmp src/bottles-opener $(LIBS)
 	msgcat --use-first --sort-output --output-file=po/bottles-opener.pot \

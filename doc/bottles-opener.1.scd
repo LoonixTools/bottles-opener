@@ -125,4 +125,4 @@ dependencies), *update-mime-database*. Optional: *notify-send*.
 
 # AUTHORS
 
-Felitendo. https://github.com/Felitendo/bottles-opener
+Felitendo. https://github.com/LoonixTools/bottles-opener

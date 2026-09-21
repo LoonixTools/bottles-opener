@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bottles-opener 0.1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/Felitendo/bottles-opener/issues\n"
+"Report-Msgid-Bugs-To: https://github.com/LoonixTools/bottles-opener/issues\n"
 "POT-Creation-Date: 2026-09-21 11:30+0200\n"
 "PO-Revision-Date: 2026-09-21 00:00+0200\n"
 "Last-Translator: Felitendo\n"
