@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the bottles-opener package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: bottles-opener 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Felitendo/bottles-opener/issues\n"
+"POT-Creation-Date: 2026-09-21 11:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, sh-printf-format
+msgid "\"%s\" is not a file extension."
+msgstr ""
+
+msgid "\"double-click\" opens it; \"Open With\" only lists the program there."
+msgstr ""
+
+msgid "%d days ago"
+msgstr ""
+
+msgid "%d hours ago"
+msgstr ""
+
+#, sh-printf-format
+msgid "%d in %d bottles"
+msgstr ""
+
+#, sh-printf-format
+msgid "%d in 1 bottle"
+msgstr ""
+
+msgid "%d minutes ago"
+msgstr ""
+
+msgid "1 day ago"
+msgstr ""
+
+msgid "1 hour ago"
+msgstr ""
+
+msgid "1 minute ago"
+msgstr ""
+
+#, sh-printf-format
+msgid "Already up to date for %s."
+msgstr ""
+
+msgid ""
+"Bottles could not be read - is python3 with PyYAML installed? Nothing was "
+"changed."
+msgstr ""
+
+msgid ""
+"Bottles is not installed - neither the package nor the Flatpak was found."
+msgstr ""
+
+msgid "Commands:"
+msgstr ""
+
+#, sh-printf-format
+msgid "Could not hand %s to the Bottles Flatpak."
+msgstr ""
+
+msgid "Could not save the setting."
+msgstr ""
+
+msgid "Could not start the watcher for newly installed programs."
+msgstr ""
+
+msgid "Double-click one of these files and it opens in its program."
+msgstr ""
+
+msgid "File opening"
+msgstr ""
+
+msgid "File opening is off - this is what it would do."
+msgstr ""
+
+msgid "File opening is off and everything that was changed has been put back."
+msgstr ""
+
+msgid "File opening is off. Turn it on first."
+msgstr ""
+
+#, sh-printf-format
+msgid "File opening is on for %s."
+msgstr ""
+
+msgid "File types"
+msgstr ""
+
+#, sh-printf-format
+msgid "File types for %s, separated by spaces:"
+msgstr ""
+
+msgid "Find the file types of installed programs"
+msgstr ""
+
+msgid "Give files the icon of their program"
+msgstr ""
+
+msgid "Last applied"
+msgstr ""
+
+msgid "List every file type and what opens it"
+msgstr ""
+
+msgid "List every program and the file types it opens"
+msgstr ""
+
+msgid "Looking at the bottles..."
+msgstr ""
+
+#, sh-printf-format
+msgid "More than one program is called \"%s\" - name the bottle as well."
+msgstr ""
+
+msgid "New programs"
+msgstr ""
+
+#, sh-printf-format
+msgid "No drive in the bottle \"%s\" reaches %s."
+msgstr ""
+
+msgid ""
+"No file types are set up yet. Add one with \"bottles-opener add\" or under "
+"File types in the menu."
+msgstr ""
+
+msgid "No file types yet."
+msgstr ""
+
+msgid "No file types yet. Press a to add one."
+msgstr ""
+
+#, sh-printf-format
+msgid ""
+"No program called \"%s\" was found. \"bottles-opener programs\" lists them "
+"all."
+msgstr ""
+
+msgid "No programs found in any bottle."
+msgstr ""
+
+msgid ""
+"No systemd user session - newly installed programs will not be picked up on "
+"their own."
+msgstr ""
+
+#, sh-printf-format
+msgid "Not overwriting %s - it was not written by this program."
+msgstr ""
+
+#, sh-printf-format
+msgid "Nothing opens .%s."
+msgstr ""
+
+msgid "OFF"
+msgstr ""
+
+msgid "ON"
+msgstr ""
+
+msgid "Open With"
+msgstr ""
+
+msgid "Open a file type with a program"
+msgstr ""
+
+#, sh-printf-format
+msgid "Opens files in %s from the bottle \"%s\""
+msgstr ""
+
+msgid "Pick up newly installed programs"
+msgstr ""
+
+msgid "Pick up programs installed since the last run"
+msgstr ""
+
+msgid "Press any key to continue..."
+msgstr ""
+
+msgid "Programs"
+msgstr ""
+
+msgid "Programs found"
+msgstr ""
+
+msgid "Quit"
+msgstr ""
+
+msgid "Re-apply everything"
+msgstr ""
+
+msgid "Saved."
+msgstr ""
+
+msgid "Saved. Turn file opening on with \"bottles-opener enable\"."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Show the version"
+msgstr ""
+
+msgid "Show this help"
+msgstr ""
+
+msgid "Show what is set up"
+msgstr ""
+
+msgid "Stop opening a file type"
+msgstr ""
+
+msgid "Take everything back and write it again"
+msgstr ""
+
+#, sh-printf-format
+msgid "The file %s does not exist."
+msgstr ""
+
+msgid ""
+"This launcher is out of date. Run \"bottles-opener apply\" and try again."
+msgstr ""
+
+msgid "Turn file opening on"
+msgstr ""
+
+msgid "Turn file opening on or off"
+msgstr ""
+
+msgid "Turn it off and put everything back"
+msgstr ""
+
+#, sh-printf-format
+msgid "Unknown command: %s"
+msgstr ""
+
+msgid "Up/Down select - Enter edits its file types - q goes back"
+msgstr ""
+
+msgid "Up/Down select - Enter picks - q cancels"
+msgstr ""
+
+msgid "Up/Down select - Space changes - q goes back"
+msgstr ""
+
+msgid ""
+"Up/Down select - Space switches - a adds one - Del removes - q goes back"
+msgstr ""
+
+msgid "Usage: bottles-opener [command]"
+msgstr ""
+
+msgid ""
+"Usage: bottles-opener add <extension> <program> [bottle] [--open-with|--"
+"default]"
+msgstr ""
+
+msgid "Usage: bottles-opener open <launcher> [file...]"
+msgstr ""
+
+msgid "Usage: bottles-opener remove <extension> [program] [bottle]"
+msgstr ""
+
+msgid "Which file extensions? For example: flp fst"
+msgstr ""
+
+#, sh-printf-format
+msgid "Which program opens %s?"
+msgstr ""
+
+msgid "Without a command an interactive menu is shown."
+msgstr ""
+
+msgid "added"
+msgstr ""
+
+msgid "could not be read - is python3 with PyYAML installed?"
+msgstr ""
+
+msgid "double-click"
+msgstr ""
+
+msgid "just now"
+msgstr ""
+
+msgid "never"
+msgstr ""
+
+msgid "none yet - add one under File types"
+msgstr ""
+
+msgid "not found"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "program not found"
+msgstr ""

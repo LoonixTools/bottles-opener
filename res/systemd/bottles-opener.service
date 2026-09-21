@@ -1,0 +1,12 @@
+[Unit]
+Description=Set up file opening for programs installed with Bottles
+Documentation=man:bottles-opener(1)
+
+[Service]
+Type=oneshot
+ExecStart=@BINDIR@/bottles-opener apply --quiet
+# Reading every bottle.yml is quick; one that takes longer than this has found
+# something pathological and should not be left running.
+TimeoutStartSec=120
+Nice=10
+IOSchedulingClass=idle

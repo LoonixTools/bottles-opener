@@ -1,0 +1,372 @@
+#!/usr/bin/env bash
+#
+# bottles-opener - double-click a file and it opens in its Windows program,
+# inside its bottle
+#
+# Copyright (C) 2026 Felitendo
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -uo pipefail
+
+BO_LIBDIR="${BO_LIBDIR:-@LIBDIR@}"
+
+# What the launchers run; a desktop session's PATH may differ.
+BO_SELF="$(readlink -f -- "${BASH_SOURCE[0]}")"
+
+for _mod in common config scan known mime assoc apply open menu; do
+	# shellcheck source=/dev/null
+	if ! source "$BO_LIBDIR/$_mod.sh"; then
+		printf 'bottles-opener: cannot load %s/%s.sh\n' "$BO_LIBDIR" "$_mod" >&2
+		exit 14
+	fi
+done
+unset _mod
+
+# As root this would set up root's file types, not the user's.
+if [[ $EUID -eq 0 && -z ${BO_ALLOW_ROOT:-} ]]; then
+	printf 'bottles-opener: run this as your own user, not as root.\n' >&2
+	exit 2
+fi
+
+# ---------------------------------------------------------------------------
+# Commands
+# ---------------------------------------------------------------------------
+
+_bo_need_bottles() {
+	bo_installs_detect
+	(( ${#BO_INSTALLS[@]} )) && return 0
+	bo_bad "$(bo_msg "Bottles is not installed - neither the package nor the Flatpak was found.")"
+	return 1
+}
+
+_bo_report() {
+	if (( BO_N_ACTIVE == 0 )); then
+		bo_note "$(bo_msg "No file types are set up yet. Add one with \"bottles-opener add\" or under File types in the menu.")"
+	else
+		bo_ok "$(bo_msg "File opening is on for %s." "$(bo_assoc_active_exts 12)")"
+	fi
+}
+
+bo_do_enable() {
+	_bo_need_bottles || return 1
+
+	bo_config_set Enabled yes || {
+		bo_bad "$(bo_msg "Could not save the setting.")"
+		return 1
+	}
+	bo_config_load
+
+	bo_apply || return 1
+	_bo_report
+
+	if [[ $CFG_WATCH == yes ]]; then
+		if bo_watch_available; then
+			bo_watch_enable || bo_note "$(bo_msg "Could not start the watcher for newly installed programs.")"
+		else
+			bo_note "$(bo_msg "No systemd user session - newly installed programs will not be picked up on their own.")"
+		fi
+	fi
+}
+
+bo_do_disable() {
+	bo_config_set Enabled no || {
+		bo_bad "$(bo_msg "Could not save the setting.")"
+		return 1
+	}
+
+	bo_revert
+	bo_watch_disable
+
+	bo_ok "$(bo_msg "File opening is off and everything that was changed has been put back.")"
+}
+
+bo_do_apply() {
+	local rebuild=0 arg
+
+	for arg in "$@"; do
+		case "$arg" in
+			--rebuild) rebuild=1 ;;
+			--quiet)   BO_QUIET=1 ;;
+		esac
+	done
+
+	bo_config_load
+
+	if [[ $CFG_ENABLED != yes ]]; then
+		# The watcher, while switched off.
+		[[ -n $BO_QUIET ]] && return 0
+		bo_note "$(bo_msg "File opening is off. Turn it on first.")"
+		return 1
+	fi
+
+	# The repair: whatever drifted is written again.
+	if (( rebuild )); then
+		bo_revert
+	fi
+
+	bo_apply || return 1
+
+	if (( rebuild || BO_CHANGES )); then
+		_bo_report
+	elif (( BO_N_ACTIVE )); then
+		bo_ok "$(bo_msg "Already up to date for %s." "$(bo_assoc_active_exts 12)")"
+	else
+		_bo_report
+	fi
+
+	if [[ $CFG_WATCH == yes ]] && bo_watch_available; then
+		if bo_watch_enabled; then
+			bo_watch_refresh
+		else
+			bo_watch_enable || true
+		fi
+	elif [[ $CFG_WATCH != yes ]] && bo_watch_enabled; then
+		bo_watch_disable
+	fi
+}
+
+bo_do_status() {
+	bo_config_load
+	bo_head "  $BO_PRETTY"
+	bo_ui_status
+	printf '\n'
+}
+
+# bo_do_list
+# Every file type and what opens it.
+bo_do_list() {
+	local k i label state pad l_default l_openwith l_off l_missing
+
+	bo_config_load
+	bo_assoc_compute
+
+	if (( ${#BO_A_ORDER[@]} == 0 )); then
+		bo_note "$(bo_msg "No file types yet.")"
+		return 0
+	fi
+
+	bo_msg_into "double-click";      l_default="$BO_MSG_RESULT"
+	bo_msg_into "Open With";         l_openwith="$BO_MSG_RESULT"
+	bo_msg_into "off";               l_off="$BO_MSG_RESULT"
+	bo_msg_into "program not found"; l_missing="$BO_MSG_RESULT"
+
+	bo_head "  $(bo_msg "File types")"
+
+	for k in "${BO_A_ORDER[@]}"; do
+		i="${BO_A_PIDX[k]}"
+		if (( i >= 0 )); then
+			bo_program_label "$i"
+			label="$BO_LABEL"
+			case "${BO_A_STATE[k]}" in
+				default)  state="$l_default" ;;
+				openwith) state="$l_openwith" ;;
+				*)        state="$l_off" ;;
+			esac
+		else
+			label="${BO_A_BOTTLE[k]}"
+			state="$l_missing"
+		fi
+		printf -v label '%-9s %s' ".${BO_A_EXT[k]}" "$label"
+		pad=$(( 46 - ${#label} ))
+		(( pad < 0 )) && pad=0
+		printf '  %s%*s %s\n' "$label" "$pad" '' "$state"
+	done
+	printf '\n'
+}
+
+# bo_do_programs
+# Every program in every bottle, with the file types it opens.
+bo_do_programs() {
+	local i pad label
+
+	bo_config_load
+	_bo_need_bottles || return 1
+	bo_assoc_compute
+
+	if (( ${#BO_P_ID[@]} == 0 )); then
+		bo_note "$(bo_msg "No programs found in any bottle.")"
+		return 0
+	fi
+
+	bo_head "  $(bo_msg "Programs")"
+	for i in "${!BO_P_ID[@]}"; do
+		bo_program_label "$i"
+		label="$BO_LABEL"
+		pad=$(( 46 - ${#label} ))
+		(( pad < 0 )) && pad=0
+		printf '  %s%*s %s%s%s\n' "$label" "$pad" '' "$BO_C_DIM" "$(bo_program_exts "$i")" "$BO_C_RESET"
+	done
+	printf '\n'
+}
+
+# _bo_find_program <program> [bottle]
+# By name or id, optionally within one bottle. Index in BO_FOUND.
+_bo_find_program() {
+	local want="$1" bottle="${2:-}" i
+	local -a hits=()
+
+	for i in "${!BO_P_ID[@]}"; do
+		[[ -n $bottle && ${BO_P_BOTTLE[i]} != "$bottle" ]] && continue
+		if [[ ${BO_P_ID[i]} == "$want" || ${BO_P_NAME[i],,} == "${want,,}" ]]; then
+			hits+=("$i")
+		fi
+	done
+
+	if (( ${#hits[@]} == 1 )); then
+		BO_FOUND="${hits[0]}"
+		return 0
+	fi
+
+	if (( ${#hits[@]} == 0 )); then
+		bo_bad "$(bo_msg "No program called \"%s\" was found. \"bottles-opener programs\" lists them all." "$want")"
+	else
+		bo_bad "$(bo_msg "More than one program is called \"%s\" - name the bottle as well." "$want")"
+	fi
+	return 1
+}
+
+# bo_do_add <extensions> <program> [bottle] [--open-with|--default]
+# Extensions separated by commas: flp,fst.
+bo_do_add() {
+	local state='' arg ext i
+	local -a pos=()
+
+	for arg in "$@"; do
+		case "$arg" in
+			--open-with) state=openwith ;;
+			--default)   state=default ;;
+			*)           pos+=("$arg") ;;
+		esac
+	done
+
+	if (( ${#pos[@]} < 2 )); then
+		bo_bad "$(bo_msg "Usage: bottles-opener add <extension> <program> [bottle] [--open-with|--default]")"
+		return 1
+	fi
+
+	if ! _bo_parse_exts "${pos[0]}" || (( ${#BO_EXTS[@]} == 0 )); then
+		bo_bad "$(bo_msg "\"%s\" is not a file extension." "${BO_EXT:-${pos[0]}}")"
+		return 1
+	fi
+
+	bo_config_load
+	_bo_need_bottles || return 1
+	bo_scan_once
+	_bo_find_program "${pos[1]}" "${pos[2]:-}" || return 1
+	# Saved: bo_assoc_compute looks programs up through BO_FOUND as well.
+	i=$BO_FOUND
+
+	bo_assoc_compute
+	for ext in "${BO_EXTS[@]}"; do
+		bo_assoc_add "$ext" "$i" "$state" || {
+			bo_bad "$(bo_msg "Could not save the setting.")"
+			return 1
+		}
+	done
+
+	if [[ $CFG_ENABLED == yes ]]; then
+		bo_do_apply
+	else
+		bo_ok "$(bo_msg "Saved. Turn file opening on with \"bottles-opener enable\".")"
+	fi
+}
+
+# bo_do_remove <extensions> [program] [bottle]
+# With every program that opens them, or only the one named.
+bo_do_remove() {
+	local k n=0 i ext
+
+	if (( $# < 1 )) || ! _bo_parse_exts "$1" || (( ${#BO_EXTS[@]} == 0 )); then
+		bo_bad "$(bo_msg "Usage: bottles-opener remove <extension> [program] [bottle]")"
+		return 1
+	fi
+
+	bo_config_load
+	bo_scan_once
+	local only=-1
+	if (( $# >= 2 )); then
+		_bo_find_program "$2" "${3:-}" || return 1
+		only=$BO_FOUND
+	fi
+
+	bo_assoc_compute
+	for ext in "${BO_EXTS[@]}"; do
+		for k in "${!BO_A_EXT[@]}"; do
+			[[ ${BO_A_EXT[k]} == "$ext" && ${BO_A_STATE[k]} != off ]] || continue
+			i="${BO_A_PIDX[k]}"
+			(( only < 0 || only == i )) || continue
+			bo_assoc_remove "$k" && n=$(( n + 1 ))
+		done
+	done
+
+	if (( n == 0 )); then
+		bo_note "$(bo_msg "Nothing opens .%s." "${BO_EXTS[*]}")"
+		return 1
+	fi
+
+	if [[ $CFG_ENABLED == yes ]]; then
+		bo_do_apply
+	else
+		bo_ok "$(bo_msg "Saved.")"
+	fi
+}
+
+bo_do_help() {
+	cat <<- EOF
+	$BO_PRETTY $BO_VERSION
+
+	$(bo_msg "Usage: bottles-opener [command]")
+
+	$(bo_msg "Commands:")
+	  enable                    $(bo_msg "Turn file opening on")
+	  disable                   $(bo_msg "Turn it off and put everything back")
+	  apply                     $(bo_msg "Pick up programs installed since the last run")
+	  apply --rebuild           $(bo_msg "Take everything back and write it again")
+	  status                    $(bo_msg "Show what is set up")
+	  list                      $(bo_msg "List every file type and what opens it")
+	  programs                  $(bo_msg "List every program and the file types it opens")
+	  add <ext> <program> [bottle]
+	                            $(bo_msg "Open a file type with a program")
+	  remove <ext> [program]    $(bo_msg "Stop opening a file type")
+	  -h, --help                $(bo_msg "Show this help")
+	  -V, --version             $(bo_msg "Show the version")
+
+	$(bo_msg "Without a command an interactive menu is shown.")
+	EOF
+}
+
+# ---------------------------------------------------------------------------
+# Dispatch
+# ---------------------------------------------------------------------------
+
+main() {
+	local cmd="${1:-}"
+	[[ $# -gt 0 ]] && shift
+
+	case "$cmd" in
+		enable)   bo_do_enable "$@" ;;
+		disable)  bo_do_disable "$@" ;;
+		apply|refresh) bo_do_apply "$@" ;;
+		status)   bo_do_status "$@" ;;
+		list)     bo_do_list "$@" ;;
+		programs) bo_do_programs "$@" ;;
+		add)      bo_do_add "$@" ;;
+		remove)   bo_do_remove "$@" ;;
+
+		# What the launchers run. Not in the help: nobody types it.
+		open)     bo_do_open "$@" ;;
+
+		-h|--help|help) bo_do_help ;;
+		-V|--version)   printf '%s %s\n' "$BO_NAME" "$BO_VERSION" ;;
+
+		'') bo_ui_menu ;;
+		*)
+			bo_bad "$(bo_msg "Unknown command: %s" "$cmd")"
+			printf '\n'
+			bo_do_help
+			exit 1
+			;;
+	esac
+}
+
+main "$@"

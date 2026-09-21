@@ -1,0 +1,333 @@
+# German translation for bottles-opener.
+# Copyright (C) 2026 Felitendo
+# This file is distributed under the same license as bottles-opener.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bottles-opener 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Felitendo/bottles-opener/issues\n"
+"POT-Creation-Date: 2026-09-21 11:30+0200\n"
+"PO-Revision-Date: 2026-09-21 00:00+0200\n"
+"Last-Translator: Felitendo\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, sh-printf-format
+msgid "\"%s\" is not a file extension."
+msgstr "„%s“ ist keine Dateiendung."
+
+msgid "\"double-click\" opens it; \"Open With\" only lists the program there."
+msgstr ""
+"„Doppelklick“ öffnet die Datei; „Öffnen mit“ listet das Programm nur dort "
+"auf."
+
+msgid "%d days ago"
+msgstr "vor %d Tagen"
+
+msgid "%d hours ago"
+msgstr "vor %d Stunden"
+
+#, sh-printf-format
+msgid "%d in %d bottles"
+msgstr "%d in %d Bottles"
+
+#, sh-printf-format
+msgid "%d in 1 bottle"
+msgstr "%d in 1 Bottle"
+
+msgid "%d minutes ago"
+msgstr "vor %d Minuten"
+
+msgid "1 day ago"
+msgstr "vor 1 Tag"
+
+msgid "1 hour ago"
+msgstr "vor 1 Stunde"
+
+msgid "1 minute ago"
+msgstr "vor 1 Minute"
+
+#, sh-printf-format
+msgid "Already up to date for %s."
+msgstr "Für %s ist schon alles eingerichtet."
+
+msgid ""
+"Bottles could not be read - is python3 with PyYAML installed? Nothing was "
+"changed."
+msgstr ""
+"Bottles konnte nicht gelesen werden - ist python3 mit PyYAML installiert? Es "
+"wurde nichts geändert."
+
+msgid ""
+"Bottles is not installed - neither the package nor the Flatpak was found."
+msgstr ""
+"Bottles ist nicht installiert - weder das Paket noch das Flatpak wurde "
+"gefunden."
+
+msgid "Commands:"
+msgstr "Befehle:"
+
+#, sh-printf-format
+msgid "Could not hand %s to the Bottles Flatpak."
+msgstr "%s konnte nicht an das Bottles-Flatpak übergeben werden."
+
+msgid "Could not save the setting."
+msgstr "Die Einstellung konnte nicht gespeichert werden."
+
+msgid "Could not start the watcher for newly installed programs."
+msgstr ""
+"Die Überwachung für neu installierte Programme konnte nicht gestartet werden."
+
+msgid "Double-click one of these files and it opens in its program."
+msgstr "Ein Doppelklick auf eine dieser Dateien öffnet sie in ihrem Programm."
+
+msgid "File opening"
+msgstr "Dateien öffnen"
+
+msgid "File opening is off - this is what it would do."
+msgstr "Dateien öffnen ist aus - so würde es aussehen."
+
+msgid "File opening is off and everything that was changed has been put back."
+msgstr ""
+"Dateien öffnen ist aus und alles, was geändert wurde, ist wiederhergestellt."
+
+msgid "File opening is off. Turn it on first."
+msgstr "Dateien öffnen ist aus. Schalte es zuerst ein."
+
+#, sh-printf-format
+msgid "File opening is on for %s."
+msgstr "Dateien öffnen ist an für %s."
+
+msgid "File types"
+msgstr "Dateitypen"
+
+#, sh-printf-format
+msgid "File types for %s, separated by spaces:"
+msgstr "Dateitypen für %s, durch Leerzeichen getrennt:"
+
+msgid "Find the file types of installed programs"
+msgstr "Dateitypen installierter Programme erkennen"
+
+msgid "Give files the icon of their program"
+msgstr "Dateien das Symbol ihres Programms geben"
+
+msgid "Last applied"
+msgstr "Zuletzt angewendet"
+
+msgid "List every file type and what opens it"
+msgstr "Alle Dateitypen auflisten und womit sie geöffnet werden"
+
+msgid "List every program and the file types it opens"
+msgstr "Alle Programme und ihre Dateitypen auflisten"
+
+msgid "Looking at the bottles..."
+msgstr "Bottles werden durchsucht..."
+
+#, sh-printf-format
+msgid "More than one program is called \"%s\" - name the bottle as well."
+msgstr "Mehrere Programme heißen „%s“ - gib auch die Bottle an."
+
+msgid "New programs"
+msgstr "Neue Programme"
+
+#, sh-printf-format
+msgid "No drive in the bottle \"%s\" reaches %s."
+msgstr "Kein Laufwerk in der Bottle „%s“ erreicht %s."
+
+msgid ""
+"No file types are set up yet. Add one with \"bottles-opener add\" or under "
+"File types in the menu."
+msgstr ""
+"Noch keine Dateitypen eingerichtet. Füge einen mit „bottles-opener add“ oder "
+"im Menü unter Dateitypen hinzu."
+
+msgid "No file types yet."
+msgstr "Noch keine Dateitypen."
+
+msgid "No file types yet. Press a to add one."
+msgstr "Noch keine Dateitypen. Drücke a, um einen hinzuzufügen."
+
+#, sh-printf-format
+msgid ""
+"No program called \"%s\" was found. \"bottles-opener programs\" lists them "
+"all."
+msgstr ""
+"Kein Programm namens „%s“ gefunden. „bottles-opener programs“ listet alle "
+"auf."
+
+msgid "No programs found in any bottle."
+msgstr "In keiner Bottle wurden Programme gefunden."
+
+msgid ""
+"No systemd user session - newly installed programs will not be picked up on "
+"their own."
+msgstr ""
+"Keine systemd-Benutzersitzung - neu installierte Programme werden nicht von "
+"selbst erkannt."
+
+#, sh-printf-format
+msgid "Not overwriting %s - it was not written by this program."
+msgstr ""
+"%s wird nicht überschrieben - die Datei stammt nicht von diesem Programm."
+
+#, sh-printf-format
+msgid "Nothing opens .%s."
+msgstr "Nichts öffnet .%s."
+
+msgid "OFF"
+msgstr "AUS"
+
+msgid "ON"
+msgstr "AN"
+
+msgid "Open With"
+msgstr "Öffnen mit"
+
+msgid "Open a file type with a program"
+msgstr "Einen Dateityp mit einem Programm öffnen"
+
+#, sh-printf-format
+msgid "Opens files in %s from the bottle \"%s\""
+msgstr "Öffnet Dateien in %s aus der Bottle „%s“"
+
+msgid "Pick up newly installed programs"
+msgstr "Neu installierte Programme erkennen"
+
+msgid "Pick up programs installed since the last run"
+msgstr "Seit dem letzten Lauf installierte Programme übernehmen"
+
+msgid "Press any key to continue..."
+msgstr "Beliebige Taste drücken, um fortzufahren..."
+
+msgid "Programs"
+msgstr "Programme"
+
+msgid "Programs found"
+msgstr "Gefundene Programme"
+
+msgid "Quit"
+msgstr "Beenden"
+
+msgid "Re-apply everything"
+msgstr "Alles neu anwenden"
+
+msgid "Saved."
+msgstr "Gespeichert."
+
+msgid "Saved. Turn file opening on with \"bottles-opener enable\"."
+msgstr "Gespeichert. Schalte Dateien öffnen mit „bottles-opener enable“ ein."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Show the version"
+msgstr "Version anzeigen"
+
+msgid "Show this help"
+msgstr "Diese Hilfe anzeigen"
+
+msgid "Show what is set up"
+msgstr "Anzeigen, was eingerichtet ist"
+
+msgid "Stop opening a file type"
+msgstr "Einen Dateityp nicht mehr öffnen"
+
+msgid "Take everything back and write it again"
+msgstr "Alles zurücknehmen und neu schreiben"
+
+#, sh-printf-format
+msgid "The file %s does not exist."
+msgstr "Die Datei %s existiert nicht."
+
+msgid ""
+"This launcher is out of date. Run \"bottles-opener apply\" and try again."
+msgstr ""
+"Dieser Starter ist veraltet. Führe „bottles-opener apply“ aus und versuche "
+"es noch einmal."
+
+msgid "Turn file opening on"
+msgstr "Dateien öffnen einschalten"
+
+msgid "Turn file opening on or off"
+msgstr "Dateien öffnen ein- oder ausschalten"
+
+msgid "Turn it off and put everything back"
+msgstr "Ausschalten und alles wiederherstellen"
+
+#, sh-printf-format
+msgid "Unknown command: %s"
+msgstr "Unbekannter Befehl: %s"
+
+msgid "Up/Down select - Enter edits its file types - q goes back"
+msgstr "Hoch/Runter wählt - Enter bearbeitet die Dateitypen - q geht zurück"
+
+msgid "Up/Down select - Enter picks - q cancels"
+msgstr "Hoch/Runter wählt - Enter übernimmt - q bricht ab"
+
+msgid "Up/Down select - Space changes - q goes back"
+msgstr "Hoch/Runter wählt - Leertaste ändert - q geht zurück"
+
+msgid ""
+"Up/Down select - Space switches - a adds one - Del removes - q goes back"
+msgstr ""
+"Hoch/Runter wählt - Leertaste schaltet um - a fügt hinzu - Entf entfernt - q "
+"geht zurück"
+
+msgid "Usage: bottles-opener [command]"
+msgstr "Aufruf: bottles-opener [Befehl]"
+
+msgid ""
+"Usage: bottles-opener add <extension> <program> [bottle] [--open-with|--"
+"default]"
+msgstr ""
+"Aufruf: bottles-opener add <Endung> <Programm> [Bottle] [--open-with|--"
+"default]"
+
+msgid "Usage: bottles-opener open <launcher> [file...]"
+msgstr "Aufruf: bottles-opener open <Starter> [Datei...]"
+
+msgid "Usage: bottles-opener remove <extension> [program] [bottle]"
+msgstr "Aufruf: bottles-opener remove <Endung> [Programm] [Bottle]"
+
+msgid "Which file extensions? For example: flp fst"
+msgstr "Welche Dateiendungen? Zum Beispiel: flp fst"
+
+#, sh-printf-format
+msgid "Which program opens %s?"
+msgstr "Welches Programm öffnet %s?"
+
+msgid "Without a command an interactive menu is shown."
+msgstr "Ohne Befehl wird ein interaktives Menü angezeigt."
+
+msgid "added"
+msgstr "hinzugefügt"
+
+msgid "could not be read - is python3 with PyYAML installed?"
+msgstr "konnte nicht gelesen werden - ist python3 mit PyYAML installiert?"
+
+msgid "double-click"
+msgstr "Doppelklick"
+
+msgid "just now"
+msgstr "gerade eben"
+
+msgid "never"
+msgstr "nie"
+
+msgid "none yet - add one under File types"
+msgstr "noch keine - unter Dateitypen hinzufügen"
+
+msgid "not found"
+msgstr "nicht gefunden"
+
+msgid "off"
+msgstr "aus"
+
+msgid "package"
+msgstr "Paket"
+
+msgid "program not found"
+msgstr "Programm nicht gefunden"

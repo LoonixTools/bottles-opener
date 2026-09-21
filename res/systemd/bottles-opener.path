@@ -1,0 +1,26 @@
+[Unit]
+Description=Watch Bottles for newly installed programs
+Documentation=man:bottles-opener(1)
+
+[Path]
+# A bottle that is created or deleted. Where the bottles are depends on how
+# Bottles was installed: a distribution package keeps them in the user's data
+# directory, the Flatpak in its own. A directory that does not exist on this
+# system costs nothing - systemd watches the nearest parent that does and picks
+# the path up when it appears.
+PathModified=%h/.local/share/bottles/bottles
+PathModified=%h/.var/app/com.usebottles.bottles/data/bottles/bottles
+
+# A program installed into a bottle that already exists turns up in that
+# bottle's bottle.yml, and Bottles can be told to keep its bottles somewhere
+# else entirely. Neither can be written down here: `enable` lists them in a
+# drop-in, and every run of the service keeps that list current.
+
+# A type the system defines is copied whole to change its icon; a
+# shared-mime-info update refreshes the copy.
+PathModified=/usr/share/mime/packages
+
+Unit=bottles-opener.service
+
+[Install]
+WantedBy=default.target

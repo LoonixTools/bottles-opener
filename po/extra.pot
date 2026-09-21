@@ -1,0 +1,39 @@
+# Messages xgettext cannot find on its own: the setting labels are kept in an
+# array (src/lib/menu.sh, BO_SETTINGS) and looked up by value, and the parser
+# loses track inside the (( )) conditions of bo_time_ago (src/lib/common.sh).
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Find the file types of installed programs"
+msgstr ""
+
+msgid "Give files the icon of their program"
+msgstr ""
+
+msgid "Pick up newly installed programs"
+msgstr ""
+
+msgid "never"
+msgstr ""
+
+msgid "just now"
+msgstr ""
+
+msgid "1 minute ago"
+msgstr ""
+
+msgid "%d minutes ago"
+msgstr ""
+
+msgid "1 hour ago"
+msgstr ""
+
+msgid "%d hours ago"
+msgstr ""
+
+msgid "1 day ago"
+msgstr ""
+
+msgid "%d days ago"
+msgstr ""
