@@ -11,8 +11,8 @@
 </p>
 
 <h5 align="center">
+  <a href="#how-to-use">How to use</a> |
   <a href="#how-to-install">Install</a> |
-  <a href="#features">Features</a> |
   <a href="https://ko-fi.com/felitendo">Ko-Fi</a>
 </h5>
 
