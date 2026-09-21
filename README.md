@@ -1,7 +1,20 @@
-# bottles-opener
+<p align="center">
+  <img width="200" src="res/bottles-opener.svg" alt="bottles-opener">
+</p>
 
-bottles-opener is a CLI for linux that lets you double-click a file and have it open in its Windows program, inside its bottle.
-Works with FL Studio, Microsoft Office, Photoshop, Ableton and anything else you run through [Bottles](https://usebottles.com).
+<h1 align="center">bottles-opener</h1>
+
+<h3 align="center">Double-click a file and it opens in its Windows program, inside its bottle.</h3>
+
+<p align="center">
+  Works with FL Studio, Microsoft Office, Photoshop, Ableton and anything else you run through <a href="https://usebottles.com">Bottles</a>.
+</p>
+
+<h5 align="center">
+  <a href="#how-to-install">Install</a> |
+  <a href="#features">Features</a> |
+  <a href="https://ko-fi.com/felitendo">Ko-Fi</a>
+</h5>
 
 You install FL Studio in Bottles, double-click your `.flp` and... your file manager asks what an `.flp` is. This tool reads which files your Windows programs registered in their bottle - the same list Windows uses - teaches your system those types, gives them the program's icons and hands the file over the way Explorer would. One command and your files _✨just open✨_ (like on windows).
 
@@ -71,7 +84,7 @@ No root? `make install PREFIX=~/.local` works too.
 
 Needs `bash`, `python3` with PyYAML and icoextract (Bottles needs both itself) and `update-mime-database`.
 
-## How it works
+## Features
 
 - **Which files:** read from the bottle's registry, like Windows does (`.flp` → `FL64.flp.26` → `FL64.exe "%1"`). Programs that registered nothing are matched against a built-in list: all of Office, FL Studio, Ableton, Cubase, Photoshop, Illustrator, Affinity, AutoCAD, SketchUp and more.
 - **Unknown extensions** (`.flp`, `.msg`, `.als`, ...) get a MIME type in `~/.local/share/mime/packages/bottles-opener.xml`, named like in Windows ("FL Studio project file"). Where Linux means something else by an extension (`.mpp` is Musepack, `.fst` a tracker module) the file's signature tells them apart.
