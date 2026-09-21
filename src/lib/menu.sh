@@ -184,7 +184,7 @@ bo_ui_status() {
 		_bo_row "Bottles" "${BO_C_YELLOW}$(bo_msg "not found")${BO_C_RESET}"
 	elif [[ -n $BO_SCAN_ERROR ]]; then
 		_bo_row "Bottles" \
-			"${BO_C_RED}$(bo_msg "could not be read - is python3 with PyYAML installed?")${BO_C_RESET}"
+			"${BO_C_RED}$(bo_msg "could not be read (is python3 with PyYAML installed?)")${BO_C_RESET}"
 	else
 		_bo_row "Bottles" "$where"
 	fi
@@ -201,7 +201,7 @@ bo_ui_status() {
 	if (( BO_N_ACTIVE )); then
 		_bo_row "$(bo_msg "File types")" "$exts"
 	else
-		_bo_row "$(bo_msg "File types")" "${BO_C_DIM}$(bo_msg "none yet - add one under File types")${BO_C_RESET}"
+		_bo_row "$(bo_msg "File types")" "${BO_C_DIM}$(bo_msg "none yet, add one under File types")${BO_C_RESET}"
 	fi
 
 	if bo_watch_available; then
@@ -250,7 +250,7 @@ bo_ui_settings() {
 	done
 
 	bo_msg_into "Settings"; title="$BO_MSG_RESULT"
-	bo_msg_into "Up/Down select - Space changes - q goes back"
+	bo_msg_into "Up/Down: select, Space: change, q: back"
 	hint="$BO_MSG_RESULT"
 
 	_bo_clearseq
@@ -327,7 +327,7 @@ bo_ui_pick_program() {
 		labels+=("$BO_LABEL")
 	done
 
-	bo_msg_into "Up/Down select - Enter picks - q cancels"
+	bo_msg_into "Up/Down: select, Enter: pick, q: cancel"
 	hint="$BO_MSG_RESULT"
 	_bo_clearseq
 	_bo_term_rows 7
@@ -416,7 +416,7 @@ bo_ui_programs() {
 	local -a labels=() pexts=()
 
 	bo_msg_into "Programs"; title="$BO_MSG_RESULT"
-	bo_msg_into "Up/Down select - Enter edits its file types - q goes back"
+	bo_msg_into "Up/Down: select, Enter: edit file types, q: back"
 	hint="$BO_MSG_RESULT"
 	bo_msg_into "No programs found in any bottle."; empty="$BO_MSG_RESULT"
 
@@ -501,11 +501,11 @@ bo_ui_types() {
 	local l_default l_openwith l_off l_missing l_added
 
 	bo_msg_into "File types"; title="$BO_MSG_RESULT"
-	bo_msg_into "Up/Down select - Space switches - a adds one - Del removes - q goes back"
+	bo_msg_into "Up/Down: select, Space: switch, a: add, Del: remove, q: back"
 	hint="$BO_MSG_RESULT"
 	bo_msg_into "\"double-click\" opens it; \"Open With\" only lists the program there."
 	legend="$BO_MSG_RESULT"
-	bo_msg_into "File opening is off - this is what it would do."
+	bo_msg_into "File opening is off. This is what it would do."
 	warn="$BO_MSG_RESULT"
 	bo_msg_into "No file types yet. Press a to add one."
 	empty="$BO_MSG_RESULT"

@@ -1,4 +1,4 @@
-# bottles-opener - build and install
+# bottles-opener: build and install
 #
 # Everything here is plain shell and one small Python script; "building" only
 # means compiling the gettext catalogs and rendering the man page. Both targets
@@ -56,14 +56,14 @@ po/%.mo: po/%.po
 ifdef MSGFMT
 	$(MSGFMT) --check --output-file=$@ $<
 else
-	@echo "msgfmt not found - skipping $@"
+	@echo "msgfmt not found, skipping $@"
 endif
 
 $(MANPAGE): doc/bottles-opener.1.scd
 ifdef SCDOC
 	$(SCDOC) < $< > $@
 else
-	@echo "scdoc not found - skipping $@"
+	@echo "scdoc not found, skipping $@"
 endif
 
 # Regenerates the template from the sources. The setting labels live in an
@@ -92,7 +92,7 @@ check:
 		shellcheck -x -e SC1090,SC1091 src/bottles-opener $(LIBS); \
 		echo "ok  shellcheck"; \
 	else \
-		echo "shellcheck not found - skipped"; \
+		echo "shellcheck not found, skipped"; \
 	fi
 	@if command -v msgfmt >/dev/null 2>&1; then \
 		for l in $(LINGUAS); do msgfmt --check --output-file=/dev/null po/$$l.po && echo "ok  po/$$l.po"; done; \

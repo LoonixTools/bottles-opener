@@ -6,7 +6,7 @@ Documentation=man:bottles-opener(1)
 # A bottle that is created or deleted. Where the bottles are depends on how
 # Bottles was installed: a distribution package keeps them in the user's data
 # directory, the Flatpak in its own. A directory that does not exist on this
-# system costs nothing - systemd watches the nearest parent that does and picks
+# system costs nothing: systemd watches the nearest parent that does and picks
 # the path up when it appears.
 PathModified=%h/.local/share/bottles/bottles
 PathModified=%h/.var/app/com.usebottles.bottles/data/bottles/bottles

@@ -89,7 +89,7 @@ _bo_file_put() {
 	local path="$1" content="$2" rc
 
 	if ! _bo_owned "$path"; then
-		bo_bad "$(bo_msg "Not overwriting %s - it was not written by this program." "$path")"
+		bo_bad "$(bo_msg "Not overwriting %s: this program did not write it." "$path")"
 		return 1
 	fi
 
@@ -193,7 +193,7 @@ bo_apply() {
 
 	# Unreadable looks like empty, and converging on empty removes everything.
 	if [[ -n $BO_SCAN_ERROR ]]; then
-		bo_bad "$(bo_msg "Bottles could not be read - is python3 with PyYAML installed? Nothing was changed.")"
+		bo_bad "$(bo_msg "Bottles could not be read. Is python3 with PyYAML installed? Nothing was changed.")"
 		return 1
 	fi
 

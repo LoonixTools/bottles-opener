@@ -16,7 +16,7 @@
   <a href="https://ko-fi.com/felitendo">Ko-Fi</a>
 </h5>
 
-You install FL Studio in Bottles, double-click your `.flp` and... your file manager asks what an `.flp` is. This tool reads which files your Windows programs registered in their bottle - the same list Windows uses - teaches your system those types, gives them the program's icons and hands the file over the way Explorer would. One command and your files _✨just open✨_ (like on windows).
+You install FL Studio in Bottles, double-click your `.flp` and... your file manager asks what an `.flp` is. This tool reads which files your Windows programs registered in their bottle. That is the same list Windows uses. It teaches your system those types, gives them the program's icons and hands the file over the way Explorer would. One command and your files _✨just open✨_ (like on windows).
 
 ## How to use
 
@@ -55,7 +55,7 @@ Press `[1]` and you're done. `[3]` lists every file type and lets you pick what 
     .psd      Photoshop · Adobe                    Open With
 ```
 
-`double-click` opens it. `Open With` only lists it in the right-click menu - that's what types get that already have an app on your system (`.docx` with LibreOffice), so nothing you picked gets taken away. Space switches.
+`double-click` opens it. `Open With` only lists it in the right-click menu. Types that already have an app on your system get this (like `.docx` with LibreOffice), so nothing you picked gets taken away. Space switches.
 
 `[4]` lists your programs; Enter edits their file types, so you can add any extension you like. Or without the menu:
 
@@ -65,7 +65,7 @@ bottles-opener add flp,fst "FL Studio"
 
 ## How to install
 
-**Arch (for the cachyos enjoyers)**
+**Arch**
 
 ```bash
 yay -S bottles-opener

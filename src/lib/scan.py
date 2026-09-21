@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
 # Lists the bottles and programs of one Bottles installation, and the file
-# types each program registered in its bottle's registry - the way Windows
+# types each program registered in its bottle's registry. That is how Windows
 # knows them: extension -> ProgID -> open command, icon and description.
 #
 # Runs on the host, or inside the Bottles Flatpak fed through stdin, so it only

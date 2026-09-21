@@ -145,7 +145,7 @@ bo_types_set() {
 	mkdir -p "$(dirname "$BO_TYPES")" || return 1
 	if [[ ! -e $BO_TYPES ]]; then
 		{
-			printf '# %s - file types changed by hand\n' "$BO_PRETTY"
+			printf '# %s: file types changed by hand\n' "$BO_PRETTY"
 			printf '#\n'
 			printf '# Written by `%s`. Nothing here needs editing by hand.\n' "$BO_NAME"
 		} > "$BO_TYPES" || return 1

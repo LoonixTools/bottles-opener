@@ -2,7 +2,10 @@
 
 ## Style
 
-Keep everything short — replies, explanations, comments, docs.
+- Keep everything short: replies, explanations, comments, docs.
+- Use simple English: short sentences, common words.
+- Avoid em dashes (—). Do not just swap them for "-" either. Rewrite the sentence instead, for
+  example with a comma, a colon, brackets or two sentences.
 
 ## Commits
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bottles-opener 0.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/LoonixTools/bottles-opener/issues\n"
-"POT-Creation-Date: 2026-09-21 11:30+0200\n"
+"POT-Creation-Date: 2026-09-21 13:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,12 +55,12 @@ msgid "Already up to date for %s."
 msgstr ""
 
 msgid ""
-"Bottles could not be read - is python3 with PyYAML installed? Nothing was "
+"Bottles could not be read. Is python3 with PyYAML installed? Nothing was "
 "changed."
 msgstr ""
 
 msgid ""
-"Bottles is not installed - neither the package nor the Flatpak was found."
+"Bottles is not installed. Neither the package nor the Flatpak was found."
 msgstr ""
 
 msgid "Commands:"
@@ -82,10 +82,10 @@ msgstr ""
 msgid "File opening"
 msgstr ""
 
-msgid "File opening is off - this is what it would do."
+msgid "File opening is off and everything that was changed has been put back."
 msgstr ""
 
-msgid "File opening is off and everything that was changed has been put back."
+msgid "File opening is off. This is what it would do."
 msgstr ""
 
 msgid "File opening is off. Turn it on first."
@@ -121,7 +121,7 @@ msgid "Looking at the bottles..."
 msgstr ""
 
 #, sh-printf-format
-msgid "More than one program is called \"%s\" - name the bottle as well."
+msgid "More than one program is called \"%s\". Name the bottle as well."
 msgstr ""
 
 msgid "New programs"
@@ -152,12 +152,12 @@ msgid "No programs found in any bottle."
 msgstr ""
 
 msgid ""
-"No systemd user session - newly installed programs will not be picked up on "
-"their own."
+"No systemd user session, so newly installed programs will not be picked up "
+"on their own."
 msgstr ""
 
 #, sh-printf-format
-msgid "Not overwriting %s - it was not written by this program."
+msgid "Not overwriting %s: this program did not write it."
 msgstr ""
 
 #, sh-printf-format
@@ -246,17 +246,16 @@ msgstr ""
 msgid "Unknown command: %s"
 msgstr ""
 
-msgid "Up/Down select - Enter edits its file types - q goes back"
+msgid "Up/Down: select, Enter: edit file types, q: back"
 msgstr ""
 
-msgid "Up/Down select - Enter picks - q cancels"
+msgid "Up/Down: select, Enter: pick, q: cancel"
 msgstr ""
 
-msgid "Up/Down select - Space changes - q goes back"
+msgid "Up/Down: select, Space: change, q: back"
 msgstr ""
 
-msgid ""
-"Up/Down select - Space switches - a adds one - Del removes - q goes back"
+msgid "Up/Down: select, Space: switch, a: add, Del: remove, q: back"
 msgstr ""
 
 msgid "Usage: bottles-opener [command]"
@@ -286,7 +285,7 @@ msgstr ""
 msgid "added"
 msgstr ""
 
-msgid "could not be read - is python3 with PyYAML installed?"
+msgid "could not be read (is python3 with PyYAML installed?)"
 msgstr ""
 
 msgid "double-click"
@@ -298,7 +297,7 @@ msgstr ""
 msgid "never"
 msgstr ""
 
-msgid "none yet - add one under File types"
+msgid "none yet, add one under File types"
 msgstr ""
 
 msgid "not found"

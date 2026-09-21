@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
-# Writes one icon of a Windows program as PNG to stdout - the largest image of
-# it, the way Explorer would pick it for a big view.
+# Writes one icon of a Windows program as PNG to stdout. It picks the largest
+# image, like Explorer does for a big view.
 #
 # Usage: icon.py <file> [index]
 #   <file>   an .exe or .dll, an .ico, or a .png

@@ -112,8 +112,8 @@ bo_assoc_compute() {
 	done
 
 	# A detected type is the default when this program teaches the system the
-	# type - nothing else could open it. A type the system knows already
-	# belongs to some application somebody chose, and only gets "Open With".
+	# type, because nothing else could open it. A type the system knows already
+	# belongs to an app somebody chose, so it only gets "Open With".
 	for k in "${!BO_A_EXT[@]}"; do
 		[[ ${BO_A_STATE[k]} == auto ]] || continue
 		ext="${BO_A_EXT[k]}"

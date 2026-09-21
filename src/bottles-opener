@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# bottles-opener - double-click a file and it opens in its Windows program,
+# bottles-opener: double-click a file and it opens in its Windows program,
 # inside its bottle
 #
 # Copyright (C) 2026 Felitendo
@@ -35,7 +35,7 @@ fi
 _bo_need_bottles() {
 	bo_installs_detect
 	(( ${#BO_INSTALLS[@]} )) && return 0
-	bo_bad "$(bo_msg "Bottles is not installed - neither the package nor the Flatpak was found.")"
+	bo_bad "$(bo_msg "Bottles is not installed. Neither the package nor the Flatpak was found.")"
 	return 1
 }
 
@@ -63,7 +63,7 @@ bo_do_enable() {
 		if bo_watch_available; then
 			bo_watch_enable || bo_note "$(bo_msg "Could not start the watcher for newly installed programs.")"
 		else
-			bo_note "$(bo_msg "No systemd user session - newly installed programs will not be picked up on their own.")"
+			bo_note "$(bo_msg "No systemd user session, so newly installed programs will not be picked up on their own.")"
 		fi
 	fi
 }
@@ -220,7 +220,7 @@ _bo_find_program() {
 	if (( ${#hits[@]} == 0 )); then
 		bo_bad "$(bo_msg "No program called \"%s\" was found. \"bottles-opener programs\" lists them all." "$want")"
 	else
-		bo_bad "$(bo_msg "More than one program is called \"%s\" - name the bottle as well." "$want")"
+		bo_bad "$(bo_msg "More than one program is called \"%s\". Name the bottle as well." "$want")"
 	fi
 	return 1
 }

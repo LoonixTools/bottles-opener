@@ -4,7 +4,7 @@
 #
 # The bottle's registry is asked first (scan.py): whatever an installer
 # registered there is what Windows would open. This table is for programs
-# that registered nothing - portable installs, copied folders.
+# that registered nothing, like portable installs or copied folders.
 
 # Format: <pattern>|<ext>[=<switch>] ...
 #
@@ -80,9 +80,9 @@ BO_KNOWN_PROGRAMS=(
 # Format: <ext>|<MIME type>|<description>|<magic>|<generic icon>|<flags>
 #
 # <magic>: string:<text> or big32:<hex>, matched at offset 0.
-# <flags>: "own" defines the type even where the system has the extension
-# already, as something else - .mpp is Musepack audio there, not a Project
-# file. The magic tells the two apart.
+# <flags>: "own" defines the type even where the system already uses the
+# extension for something else. For example, .mpp is Musepack audio there, not
+# a Project file. The magic tells the two apart.
 BO_KNOWN_TYPES=(
 	# Office
 	"ppa|application/x-ms-powerpoint-addin|PowerPoint add-in||x-office-presentation|"
