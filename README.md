@@ -13,7 +13,7 @@
 <h5 align="center">
   <a href="#how-to-use">How to use</a> |
   <a href="#how-to-install">Install</a> |
-  <a href="https://ko-fi.com/felitendo">Ko-Fi</a>
+  <a href="https://buymeacoffee.com/felitendo">☕ Buy Me a Coffee</a>
 </h5>
 
 You install FL Studio in Bottles, double-click your `.flp` and... your file manager asks what an `.flp` is. This tool reads which files your Windows programs registered in their bottle. That is the same list Windows uses. It teaches your system those types, gives them the program's icons and hands the file over the way Explorer would. One command and your files _✨just open✨_ (like on windows).
