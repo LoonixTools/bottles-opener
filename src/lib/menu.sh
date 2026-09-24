@@ -121,6 +121,26 @@ _bo_row() {
 	printf '  %s%*s %s\n' "$label" "$pad" '' "$value"
 }
 
+# _bo_fit <width> <words>
+# As many of the words as fit in width, the rest counted: ".doc .flp +12".
+_bo_fit() {
+	local width="$1" out='' w n=0 total rest room
+	local -a words
+	read -r -a words <<< "$2"
+	total=${#words[@]}
+	for w in "${words[@]}"; do
+		# Leave room for the count of what does not fit.
+		rest=$(( total - n - 1 ))
+		room=$(( width - ${#out} - (n > 0 ? 1 : 0) - ${#w} ))
+		(( rest > 0 )) && room=$(( room - ${#rest} - 2 ))
+		(( room < 0 )) && break
+		out+="${out:+ }$w"
+		n=$(( n + 1 ))
+	done
+	(( n < total )) && out+="${out:+ }+$(( total - n ))"
+	printf '%s\n' "$out"
+}
+
 _bo_onoff() {
 	if [[ $1 == yes ]]; then
 		printf '%s%s%s' "$BO_C_GREEN" "$(bo_msg "ON")" "$BO_C_RESET"
@@ -165,7 +185,7 @@ _bo_scroll() {
 # bo_ui_status
 # For `status` and the menu header, from a fresh scan.
 bo_ui_status() {
-	local last exts nb=0 np install where=''
+	local last exts nb=0 np install where='' cols
 
 	bo_assoc_compute
 	bo_assoc_counts
@@ -197,7 +217,11 @@ bo_ui_status() {
 		_bo_row "$(bo_msg "Programs found")" "$(bo_msg "%d in %d bottles" "$np" "$nb")"
 	fi
 
-	exts="$(bo_assoc_active_exts 10)"
+	# On one line: the value starts in column 34 of at most 80.
+	cols="$(tput cols 2>/dev/null)" || cols=80
+	[[ $cols =~ ^[0-9]+$ ]] || cols=80
+	(( cols > 80 )) && cols=80
+	exts="$(_bo_fit $(( cols - 35 )) "$(bo_assoc_active_exts)")"
 	if (( BO_N_ACTIVE )); then
 		_bo_row "$(bo_msg "File types")" "$exts"
 	else
