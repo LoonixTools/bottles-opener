@@ -8,16 +8,9 @@ _2026-09-21_
 
 Welcome to the very first release of bottles-opener! You install FL Studio in Bottles, double-click your `.flp`, and it just opens. Like on Windows.
 
-```
-  Bottles Opener
-
-  File opening                   ON
-
-  Bottles                        package
-  Programs found                 5 in 2 bottles
-  File types                     .doc .docx .flp .fsc .fst .pptx .xlsx +31
-  New programs                   ON
-```
+<p align="center">
+  <img width="620" alt="The bottles-opener menu in Konsole" src="https://raw.githubusercontent.com/LoonixTools/bottles-opener/91463a2a5062a779bb69ea5fc708967255f41c82/res/screenshots/menu.png">
+</p>
 
 ### Highlights
 

@@ -26,38 +26,15 @@ You install FL Studio in Bottles, double-click your `.flp` and... your file mana
 
 Just run `bottles-opener`:
 
-```
-  Bottles Opener
-
-  File opening                   ON
-
-  Bottles                        package
-  Programs found                 5 in 2 bottles
-  File types                     .doc .docx .flp .fsc .fst .pptx .xlsx +31
-  New programs                   ON
-  Last applied                   2 minutes ago
-
-  Double-click one of these files and it opens in its program.
-
-  [1] Turn file opening on or off
-  [2] Re-apply everything
-  [3] File types
-  [4] Programs
-  [5] Settings
-  [q] Quit
-
-  >
-```
+<p align="center">
+  <img src="res/screenshots/menu.png" alt="The bottles-opener menu in Konsole: file opening on, 5 programs in 3 bottles" width="620">
+</p>
 
 Press `[1]` and you're done. `[3]` lists every file type and lets you pick what opens it:
 
-```
-  File types
-
-  ▸ .docx     Word · Office                        double-click
-    .flp      FL Studio · FL Studio                double-click
-    .psd      Photoshop · Adobe                    Open With
-```
+<p align="center">
+  <img src="res/screenshots/file-types.png" alt="The file types list in Konsole: .flp opens in FL Studio on a double-click, Office types are under Open With" width="620">
+</p>
 
 `double-click` opens it. `Open With` only lists it in the right-click menu. Types that already have an app on your system get this (like `.docx` with LibreOffice), so nothing you picked gets taken away. Space switches.
 
