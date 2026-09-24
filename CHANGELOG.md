@@ -2,6 +2,12 @@
 
 What each release brings, newest first. The [GitHub releases](https://github.com/LoonixTools/bottles-opener/releases) add every commit that went into it.
 
+## v0.1.1
+
+_2026-09-24_
+
+A small patch. The file types in the menu now stay on one line, however wide your terminal is.
+
 ## v0.1.0
 
 _2026-09-21_
