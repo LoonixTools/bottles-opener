@@ -1,0 +1,81 @@
+name: 🐛 Bug report
+description: Something does not work as it should.
+labels:
+- bug
+body:
+- type: markdown
+  attributes:
+    value: Thanks for taking the time! The more you fill in, the faster it can be fixed.
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Before you start
+    options:
+    - label: I searched the issues and this is not reported yet.
+      required: true
+    - label: I use the latest version.
+      required: true
+- type: textarea
+  id: what
+  attributes:
+    label: What happened?
+    description: What did you do, and what went wrong?
+  validations:
+    required: true
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to reproduce
+    placeholder: |
+      1.
+      2.
+      3.
+- type: textarea
+  id: expected
+  attributes:
+    label: What did you expect?
+  validations:
+    required: true
+- type: input
+  id: file
+  attributes:
+    label: File type and program
+    description: The file type, the program that should open it, and its bottle.
+    placeholder: .psd, Photoshop in the bottle "Adobe"
+- type: input
+  id: version
+  attributes:
+    label: Version
+    description: The output of `bottles-opener --version`.
+    placeholder: bottles-opener 0.1.1
+  validations:
+    required: true
+- type: dropdown
+  id: install
+  attributes:
+    label: How did you install it?
+    options:
+    - AUR
+    - Built from source
+    - Other
+  validations:
+    required: true
+- type: input
+  id: system
+  attributes:
+    label: System
+    description: Distribution, desktop, and your Bottles version and how it is installed.
+    placeholder: CachyOS, KDE Plasma 6.4, Bottles 51 (Flatpak)
+  validations:
+    required: true
+- type: textarea
+  id: logs
+  attributes:
+    label: Status and logs
+    description: The output of `bottles-opener status` and `bottles-opener list`.
+    render: shell
+- type: textarea
+  id: more
+  attributes:
+    label: Anything else?
+    description: Screenshots, videos or anything else that could help.
