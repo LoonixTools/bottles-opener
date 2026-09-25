@@ -26,8 +26,6 @@
 yay -S bottles-opener
 ```
 
-Needs `python3` with PyYAML and icoextract. Bottles needs both too.
-
 ## How to use
 
 ```bash
